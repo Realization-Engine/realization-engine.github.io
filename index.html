@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Realization Engine</title>
+<meta name="description" content="Frameworks, specifications, and tools for turning ideas into realized systems through human and AI collaboration.">
+<style>
+  :root {
+    --fg: #1a1a1a;
+    --fg-muted: #555;
+    --bg: #fdfdfa;
+    --accent: #6b3fa0;
+    --rule: #e6e3dc;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fg: #ececec;
+      --fg-muted: #a8a8a8;
+      --bg: #161616;
+      --accent: #b89cff;
+      --rule: #2a2a2a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+  }
+  header h1 {
+    font-size: 2.25rem;
+    margin: 0 0 0.25rem;
+    letter-spacing: -0.01em;
+  }
+  header .tagline {
+    color: var(--fg-muted);
+    font-style: italic;
+    margin: 0 0 2.5rem;
+  }
+  section.vision p {
+    font-size: 1.1rem;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 3rem 0 2rem;
+  }
+  h2 {
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin: 0 0 1.5rem;
+    font-weight: normal;
+  }
+  ul.projects {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.projects li {
+    margin: 0 0 1.75rem;
+    padding: 0 0 1.75rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  ul.projects li:last-child {
+    border-bottom: none;
+  }
+  ul.projects a.title {
+    font-size: 1.15rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+  }
+  ul.projects a.title:hover { text-decoration: underline; }
+  ul.projects p {
+    margin: 0.4rem 0 0;
+    color: var(--fg-muted);
+  }
+  ul.projects .repo-link {
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    margin-left: 0.5rem;
+  }
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    color: var(--fg-muted);
+    font-size: 0.9rem;
+  }
+  footer a { color: var(--fg-muted); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Realization Engine</h1>
+    <p class="tagline">Turning specifications into realized systems.</p>
+  </header>
+
+  <section class="vision">
+    <p>
+      The Realization Engine is a body of work investigating how humans and AI
+      systems collaborate to move ideas from concept to working artifact. The
+      projects gathered here share a common thesis: that durable software is
+      built from explicit specifications, validated theory, and architectures
+      that make their own assumptions visible. Each repository contributes a
+      different layer to that program, from the formal frameworks underneath to
+      the tools that put them into practice.
+    </p>
+  </section>
+
+  <hr>
+
+  <h2>Projects</h2>
+  <ul class="projects">
+    <li>
+      <a class="title" href="/fstar/">F-Star</a>
+      <a class="repo-link" href="https://github.com/Realization-Engine/fstar">repo &rarr;</a>
+      <p>
+        Validating and operationalizing the Multiplier and Mirror framework.
+        Includes the foundational paper, mathematical basis of the Mirror, and
+        annotated citations.
+      </p>
+    </li>
+    <li>
+      <a class="title" href="/spec-chat/">Spec Chat</a>
+      <a class="repo-link" href="https://github.com/Realization-Engine/spec-chat">repo &rarr;</a>
+      <p>
+        A specification-driven system for authoring software through
+        collaboration between humans and language models. Replaces traditional
+        design documents with SpecLang and a structured workflow for evolving
+        systems through incremental specifications.
+      </p>
+    </li>
+    <li>
+      <a class="title" href="/asap/">ASAP</a>
+      <a class="repo-link" href="https://github.com/Realization-Engine/asap">repo &rarr;</a>
+      <p>
+        Architect Support Agentic Platform. Tooling and agent workflows that
+        support architects in producing and maintaining software specifications
+        at scale.
+      </p>
+    </li>
+  </ul>
+
+  <footer>
+    <p>
+      <a href="https://github.com/Realization-Engine">github.com/Realization-Engine</a>
+    </p>
+  </footer>
+</main>
+</body>
+</html>

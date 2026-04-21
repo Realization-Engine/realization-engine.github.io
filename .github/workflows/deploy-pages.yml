@@ -39,19 +39,18 @@ jobs:
           # Stylesheet
           cp docs/assets/css/docs.css site/css/docs.css
 
-          # Render each top-level markdown file under docs/ to HTML.
-          # Output lands at site/docs/<name>.html; CSS is one level up.
+          # Render each top-level markdown file under docs/ to HTML using the
+          # paper template. Output lands at site/docs/<name>.html; CSS is one
+          # level up. Paper metadata (title, author, version, etc.) is read
+          # from the YAML frontmatter of each source file.
           render_md() {
             local src="$1"
             local rel="${src#docs/}"
             local out="site/docs/${rel%.md}.html"
-            local title
-            title=$(grep -m1 '^# ' "$src" | sed 's/^# //')
             mkdir -p "$(dirname "$out")"
             pandoc "$src" \
               --standalone \
-              --metadata title="" \
-              --metadata pagetitle="$title" \
+              --template=docs/assets/template.html \
               --css "../css/docs.css" \
               -o "$out"
           }

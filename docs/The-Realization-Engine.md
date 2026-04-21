@@ -1,11 +1,13 @@
-# The Realization Engine
-
-*A program statement on the discipline by which augmented human capability is brought to bear on the work of a knowledge profession.*
-
-**Author:** Dennis A. Landi
-**Version:** 0.01
-**Date:** 2026-04-21
-
+---
+title: "The Realization Engine"
+subtitle: "A program statement on the discipline by which augmented human capability is brought to bear on the work of a knowledge profession."
+author: "Dennis A. Landi"
+version: "0.01"
+date: "2026-04-21"
+category: "Program Statement"
+folio: "№ 0"
+project: "Realization Engine"
+source: "https://github.com/Realization-Engine/realization-engine.github.io"
 ---
 
 ## Program

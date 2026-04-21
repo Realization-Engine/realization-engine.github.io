@@ -1,179 +1,496 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="auto">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Realization Engine</title>
-<meta name="description" content="Frameworks, specifications, and tools for turning ideas into realized systems through human and AI collaboration.">
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500;1,8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --fg: #1a1a1a;
-    --fg-muted: #555;
-    --bg: #fdfdfa;
-    --accent: #6b3fa0;
-    --rule: #e6e3dc;
+    --paper: #fbf9f4;
+    --paper-2: #f4f0e7;
+    --ink: #18140f;
+    --ink-2: #3a3226;
+    --ink-3: #756a58;
+    --rule: #18140f;
+    --rule-faint: rgba(24,20,15,0.16);
+    --serif: "Source Serif 4", "Source Serif Pro", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --fg: #ececec;
-      --fg-muted: #a8a8a8;
-      --bg: #161616;
-      --accent: #b89cff;
-      --rule: #2a2a2a;
+      --paper: #13110d;
+      --paper-2: #1b1813;
+      --ink: #ede2c9;
+      --ink-2: #c8bda4;
+      --ink-3: #8a7f6b;
+      --rule: #ede2c9;
+      --rule-faint: rgba(237,226,201,0.18);
     }
   }
+  html[data-theme="light"] {
+    --paper: #fbf9f4; --paper-2: #f4f0e7;
+    --ink: #18140f; --ink-2: #3a3226; --ink-3: #756a58;
+    --rule: #18140f; --rule-faint: rgba(24,20,15,0.16);
+  }
+  html[data-theme="dark"] {
+    --paper: #13110d; --paper-2: #1b1813;
+    --ink: #ede2c9; --ink-2: #c8bda4; --ink-3: #8a7f6b;
+    --rule: #ede2c9; --rule-faint: rgba(237,226,201,0.18);
+  }
+
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
-    font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
-    background: var(--bg);
-    color: var(--fg);
-    line-height: 1.6;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.5;
+    font-feature-settings: "onum" 1, "kern" 1, "liga" 1;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
-  main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 4rem 1.5rem 6rem;
-  }
-  header h1 {
-    font-size: 2.25rem;
-    margin: 0 0 0.25rem;
-    letter-spacing: -0.01em;
-  }
-  header .tagline {
-    color: var(--fg-muted);
-    font-style: italic;
-    margin: 0 0 2.5rem;
-  }
-  section.vision p {
-    font-size: 1.1rem;
-  }
-  hr {
-    border: none;
-    border-top: 1px solid var(--rule);
-    margin: 3rem 0 2rem;
-  }
-  h2 {
-    font-size: 1.25rem;
-    letter-spacing: 0.04em;
+  ::selection { background: var(--ink); color: var(--paper); }
+  a { color: inherit; text-decoration: none; }
+  a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+  .page { max-width: 1360px; margin: 0 auto; padding: 40px 56px 80px; }
+  @media (max-width: 720px) { .page { padding: 24px 22px 56px; } }
+
+  /* ───────── Top meta rule ───────── */
+  .topbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    padding-bottom: 10px;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--fg-muted);
-    margin: 0 0 1.5rem;
-    font-weight: normal;
+    color: var(--ink-3);
+    border-bottom: 1px solid var(--rule-faint);
   }
-  ul.projects {
-    list-style: none;
-    padding: 0;
+  .topbar .mid { text-align: center; }
+  .topbar .right { text-align: right; }
+
+  /* ───────── Banner wordmark ───────── */
+  .banner {
+    padding: 96px 0 56px;
+    border-bottom: 2px solid var(--rule);
+    position: relative;
+  }
+  .wordmark {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(72px, 16vw, 240px);
+    line-height: 0.88;
+    letter-spacing: -0.035em;
     margin: 0;
+    display: block;
+    padding-bottom: 0.14em;
   }
-  ul.projects li {
-    margin: 0 0 1.75rem;
-    padding: 0 0 1.75rem;
+  .wordmark em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .banner .subline {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: 48px;
+    align-items: end;
+  }
+  .banner .tag {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1.25;
+    color: var(--ink-2);
+    margin: 0;
+    max-width: 30ch;
+  }
+  .banner .meta {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    text-align: right;
+    line-height: 1.7;
+  }
+  .banner .meta span { display: block; }
+  @media (max-width: 720px) {
+    .banner { padding: 48px 0 32px; }
+    .banner .subline { grid-template-columns: 1fr; gap: 22px; }
+    .banner .meta { text-align: left; }
+  }
+
+  /* ───────── Standfirst / lede ───────── */
+  .lede {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+    gap: 56px;
+    padding: 64px 0 56px;
+    border-bottom: 1px solid var(--rule-faint);
+  }
+  .lede .label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding-top: 18px;
+  }
+  .lede .label em {
+    display: block;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-top: 8px;
+    color: var(--ink-2);
+    max-width: 22ch;
+  }
+  .lede .prose {
+    max-width: 60ch;
+    font-size: clamp(19px, 1.5vw, 22px);
+    line-height: 1.55;
+  }
+  .lede .prose > p { margin: 0 0 1em; color: var(--ink); }
+  .lede .prose > p:last-child { margin-bottom: 0; color: var(--ink-2); font-style: italic; }
+  .lede .prose > p:first-child::first-letter {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 5.2em;
+    line-height: 0.88;
+    float: left;
+    padding: 6px 14px 0 0;
+    margin-top: 2px;
+    color: var(--ink);
+  }
+  @media (max-width: 900px) {
+    .lede { grid-template-columns: 1fr; gap: 16px; padding: 40px 0 36px; }
+  }
+
+  /* ───────── Article stack — single column, equal weight ───────── */
+  .works {
+    padding: 56px 0 24px;
+  }
+  @media (max-width: 900px) { .works { padding: 28px 0 16px; } }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding-bottom: 14px;
     border-bottom: 1px solid var(--rule);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
   }
-  ul.projects li:last-child {
-    border-bottom: none;
+  .section-label .count {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    text-transform: none;
   }
-  ul.projects a.title {
-    font-size: 1.15rem;
-    color: var(--accent);
-    text-decoration: none;
-    font-weight: bold;
+
+  .entry {
+    display: grid;
+    grid-template-columns: 56px minmax(0, 1fr);
+    gap: 40px;
+    padding: 44px 0;
+    border-bottom: 1px solid var(--rule-faint);
+    align-items: baseline;
   }
-  ul.projects a.title:hover { text-decoration: underline; }
-  ul.projects p {
-    margin: 0.4rem 0 0;
-    color: var(--fg-muted);
+  .entry:last-child { border-bottom: 1px solid var(--rule); }
+  .entry .folio {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+    padding-top: 10px;
   }
-  ul.projects .repo-link {
-    font-size: 0.9rem;
-    color: var(--fg-muted);
-    margin-left: 0.5rem;
+  .entry .meta { min-width: 0; }
+  .entry .kicker {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 12px;
   }
-  footer {
-    margin-top: 4rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--rule);
-    color: var(--fg-muted);
-    font-size: 0.9rem;
+  .entry h3 {
+    margin: 0 0 14px;
+    font-weight: 400;
+    font-size: clamp(32px, 3.2vw, 44px);
+    line-height: 1.06;
+    letter-spacing: -0.016em;
+    color: var(--ink);
+    max-width: 22ch;
   }
-  footer a { color: var(--fg-muted); }
+  .entry h3 em { font-style: italic; }
+  .entry h3 a {
+    background-image: linear-gradient(var(--rule), var(--rule));
+    background-size: 0 1px; background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 280ms ease;
+    padding-bottom: 2px;
+  }
+  .entry h3 a:hover, .entry h3 a:focus-visible { background-size: 100% 1px; }
+  .entry .dek {
+    font-size: 19px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    max-width: 60ch;
+    margin: 0 0 14px;
+  }
+  .entry .cites {
+    display: block;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-2);
+    margin: 0 0 10px;
+  }
+  .entry .cites::before { content: "— "; font-style: normal; color: var(--ink-3); }
+  .entry .cites a { border-bottom: 1px solid var(--rule-faint); padding-bottom: 1px; }
+  .entry .cites a:hover { border-color: var(--rule); }
+  .entry .cites.muted { color: var(--ink-3); }
+  .entry .repo {
+    display: block;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--ink-3);
+    letter-spacing: 0.01em;
+  }
+  .entry .repo a { border-bottom: 1px solid transparent; padding-bottom: 1px; transition: border-color 160ms ease, color 160ms ease; }
+  .entry .repo a:hover { border-color: var(--rule-faint); color: var(--ink-2); }
+  .entry.pending h3 { color: var(--ink-2); font-style: italic; }
+  .entry.pending .dek { color: var(--ink-3); }
+  .entry.pending .cites { color: var(--ink-3); }
+
+  @media (max-width: 720px) {
+    .entry { grid-template-columns: 40px 1fr; gap: 16px; padding: 32px 0; }
+  }
+
+  /* ───────── Colophon ───────── */
+  .colophon-bar {
+    margin-top: 72px;
+    padding-top: 20px;
+    border-top: 2px solid var(--rule);
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 4fr) minmax(0, 4fr);
+    gap: 48px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .colophon-bar h4 {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 500;
+    margin: 0 0 12px;
+  }
+  .colophon-bar .about { color: var(--ink-2); font-style: italic; max-width: 28ch; }
+  .colophon-bar ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+  .colophon-bar ul a {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--ink-2);
+    border-bottom: 1px solid var(--rule-faint);
+  }
+  .colophon-bar ul a:hover { border-color: var(--rule); color: var(--ink); }
+  .colophon-bar dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
+  .colophon-bar dt { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); padding-top: 3px; }
+  .colophon-bar dd { margin: 0; color: var(--ink-2); }
+  @media (max-width: 900px) {
+    .colophon-bar { grid-template-columns: 1fr; gap: 28px; }
+  }
+
+  /* Footer line */
+  .foot {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule-faint);
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  /* ───────── Theme toggle ───────── */
+  .theme-toggle {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    display: inline-flex;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--rule-faint);
+    background: var(--paper);
+    border-radius: 2px;
+    z-index: 20;
+  }
+  .theme-toggle button {
+    appearance: none;
+    background: transparent;
+    color: var(--ink-3);
+    border: 0;
+    padding: 7px 10px;
+    cursor: pointer;
+    font: inherit;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .theme-toggle button[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--paper);
+  }
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1>Realization Engine</h1>
-    <p class="tagline">Turning specifications into realized systems.</p>
+
+<div class="theme-toggle" role="group" aria-label="Theme">
+  <button type="button" data-theme-btn="auto" aria-pressed="true">Auto</button>
+  <button type="button" data-theme-btn="light" aria-pressed="false">Light</button>
+  <button type="button" data-theme-btn="dark" aria-pressed="false">Dark</button>
+</div>
+
+<div class="page">
+
+  <div class="topbar">
+    <div class="left">Realization Engine · realizationengine.net</div>
+    <div class="mid">A program of research &amp; writing</div>
+    <div class="right">Vol. I · MMXXV–</div>
+  </div>
+
+  <header class="banner">
+    <h1 class="wordmark">Realization<br/><em>Engine.</em></h1>
+    <div class="subline">
+      <p class="tag">Turning specifications into realized systems.</p>
+      <div class="meta">
+        <span>Essays, whitepapers &amp; working artifacts</span>
+        <span>Open source · Living documents</span>
+      </div>
+    </div>
   </header>
 
-  <section class="vision">
-    <p>
-      The Realization Engine is a body of work investigating how humans and AI
-      systems collaborate to move ideas from concept to working artifact. The
-      projects gathered here share a common thesis: that durable software is
-      built from explicit specifications, validated theory, and architectures
-      that make their own assumptions visible. Each repository contributes a
-      different layer to that program, from the formal frameworks underneath to
-      the tools that put them into practice.
-    </p>
+  <section class="lede" aria-label="Editorial introduction">
+    <div class="label">From the Editor<em>A note on the program and what it collects.</em></div>
+    <div class="prose">
+      <p>The Realization Engine is a program of inquiry into the coupled system of practitioner, language model, and professional work. Its subject is the conditions under which augmented human capability compounds, rather than erodes, when brought to bear on the work of a knowledge profession.</p>
+      <p>The projects collected here instantiate the program for specific professions. F-Star publishes the general framework. Spec Chat instantiates it for software engineering, through a specification language and a validator exposed as a Model Context Protocol server. ASAP prepares the instantiation for enterprise architecture. The pattern extends to other professions as they undertake their own instantiations.</p>
+      <p>Entries publish as they stabilize. Source is open. Revisions are frequent. Arguments are tested against the artifacts they describe.</p>
+    </div>
   </section>
 
-  <hr>
+  <section class="works">
 
-  <h2>Program</h2>
-  <ul class="projects">
-    <li>
-      <a class="title" href="/docs/The-Realization-Engine.html">The Realization Engine</a>
-      <p>
-        A program statement on the discipline by which augmented human
-        capability is brought to bear on the work of a knowledge profession.
-        Positions F-Star, Spec Chat, and ASAP as instantiations of a tripartite
-        structure: a framework, a medium, and a practice.
-      </p>
-    </li>
-  </ul>
+    <div class="section-label">The Library <span class="count">04 entries</span></div>
 
-  <hr>
+    <article class="entry">
+      <div class="folio">№ 0</div>
+      <div class="meta">
+        <div class="kicker">Program Statement · Live</div>
+        <h3><a href="/docs/The-Realization-Engine.html">The Realization <em>Engine</em></a></h3>
+        <p class="dek">A program statement on the discipline by which augmented human capability is brought to bear on the work of a knowledge profession. Positions F-Star, Spec Chat, and ASAP as instantiations of a tripartite structure: a framework, a medium, and a practice.</p>
+        <span class="cites"><a href="/docs/The-Realization-Engine.html">Read the program statement →</a></span>
+      </div>
+    </article>
 
-  <h2>Projects</h2>
-  <ul class="projects">
-    <li>
-      <a class="title" href="/fstar/docs/">F-Star</a>
-      <a class="repo-link" href="https://github.com/Realization-Engine/fstar">repo &rarr;</a>
-      <p>
-        Validating and operationalizing the Multiplier and Mirror framework.
-        Includes the foundational paper, mathematical basis of the Mirror, and
-        annotated citations.
-      </p>
-    </li>
-    <li>
-      <a class="title" href="/spec-chat/docs/">Spec Chat</a>
-      <a class="repo-link" href="https://github.com/Realization-Engine/spec-chat">repo &rarr;</a>
-      <p>
-        A specification-driven system for authoring software through
-        collaboration between humans and language models. Replaces traditional
-        design documents with SpecLang and a structured workflow for evolving
-        systems through incremental specifications.
-      </p>
-    </li>
-    <li>
-      <a class="title" href="/asap/">ASAP</a>
-      <a class="repo-link" href="https://github.com/Realization-Engine/asap">repo &rarr;</a>
-      <p>
-        Architect Support Agentic Platform. Tooling and agent workflows that
-        support architects in producing and maintaining software specifications
-        at scale.
-      </p>
-    </li>
-  </ul>
+    <article class="entry">
+      <div class="folio">№ II</div>
+      <div class="meta">
+        <div class="kicker">F-Star</div>
+        <h3><a href="https://realizationengine.net/fstar/docs/The_Multiplier_and_the_Mirror.html">The Multiplier and the <em>Mirror</em></a></h3>
+        <p class="dek">Validating and operationalizing the Multiplier and Mirror framework — a theory of how individual capability scales through collaborative systems, and how those systems, in turn, reshape the practitioners inside them.</p>
+        <span class="cites"><a href="https://realizationengine.net/fstar/docs/The_Multiplier_and_the_Mirror_Citations.html">Citations &amp; references →</a></span>
+        <span class="repo"><a href="https://github.com/Realization-Engine/fstar">github.com/Realization-Engine/fstar</a></span>
+      </div>
+    </article>
 
-  <footer>
-    <p>
-      <a href="https://github.com/Realization-Engine">github.com/Realization-Engine</a>
-    </p>
-  </footer>
-</main>
+    <article class="entry">
+      <div class="folio">№ III</div>
+      <div class="meta">
+        <div class="kicker">Spec Chat</div>
+        <h3><a href="https://realizationengine.net/spec-chat/docs/theory/Enquiry-Into-Specification-as-Meaningful-Struggle.html">Enquiry Into Specification as <em>Meaningful Struggle</em></a></h3>
+        <p class="dek">A specification-driven approach to authoring software through collaboration between humans and language models. SpecLang replaces traditional design documents with a structured workflow for evolving systems through incremental specifications.</p>
+        <span class="cites"><a href="https://realizationengine.net/spec-chat/docs/theory/Enquiry-Into-Specification-as-Meaningful-Struggle_Citations.html">Citations &amp; references →</a></span>
+        <span class="repo"><a href="https://github.com/Realization-Engine/spec-chat">github.com/Realization-Engine/spec-chat</a></span>
+      </div>
+    </article>
+
+    <article class="entry pending">
+      <div class="folio">№ IV</div>
+      <div class="meta">
+        <div class="kicker">ASAP</div>
+        <h3><em>Title forthcoming</em></h3>
+        <p class="dek">Architect Support Agentic Platform: tooling and agent workflows that support architects in producing and maintaining software specifications at scale.</p>
+        <span class="cites muted"><em>Citations forthcoming</em></span>
+        <span class="repo"><a href="https://github.com/Realization-Engine/asap">github.com/Realization-Engine/asap</a></span>
+      </div>
+    </article>
+
+  </section>
+
+  <section class="colophon-bar" aria-label="Colophon">
+    <div>
+      <h4>About</h4>
+      <p class="about">Realization Engine collects the essays and working artifacts produced under a single research program.</p>
+    </div>
+    <div>
+      <h4>Colophon</h4>
+      <dl>
+        <dt>Set in</dt><dd>Source Serif 4 · JetBrains Mono</dd>
+        <dt>Editor</dt><dd>Dennis Landi</dd>
+        <dt>Licence</dt><dd>CC BY 4.0 · MIT (code)</dd>
+        <dt>Est.</dt><dd>MMXXV</dd>
+      </dl>
+    </div>
+  </section>
+
+  <div class="foot">
+    <div>© Realization Engine · Vol. I</div>
+    <div><a href="https://github.com/Realization-Engine">Org · github.com/Realization-Engine</a></div>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    const root = document.documentElement;
+    const key = 're.theme';
+    const saved = localStorage.getItem(key) || 'auto';
+    const apply = (v) => {
+      root.setAttribute('data-theme', v);
+      document.querySelectorAll('[data-theme-btn]').forEach(b => {
+        b.setAttribute('aria-pressed', String(b.dataset.themeBtn === v));
+      });
+    };
+    apply(saved);
+    document.querySelectorAll('[data-theme-btn]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const v = btn.dataset.themeBtn;
+        localStorage.setItem(key, v);
+        apply(v);
+      });
+    });
+  })();
+</script>
+
 </body>
 </html>

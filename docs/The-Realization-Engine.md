@@ -1,6 +1,6 @@
 ---
 title: "The Realization Engine"
-subtitle: "A program statement on the discipline by which augmented human capability is brought to bear on the work of a knowledge profession."
+subtitle: "An inquiry into the Mirror and its Ramifications as a Realization Engine."
 author: "Dennis A. Landi"
 version: "0.01"
 date: "2026-04-21"

@@ -5,7 +5,7 @@ author: "Dennis A. Landi"
 version: "0.01"
 date: "2026-04-21"
 category: "Program Statement"
-folio: "№ 0"
+folio: "Nº 0"
 project: "Realization Engine"
 source: "https://github.com/Realization-Engine/realization-engine.github.io"
 ---

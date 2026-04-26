@@ -12,6 +12,12 @@ source: "https://github.com/Realization-Engine/realization-engine.github.io"
 
 # Mirror as Cognitive Feedback Loop
 
+Try this: stand in front of a full-length mirror.
+
+Take a good look at yourself. What are your observations? Do the observations lead to thoughts related to modifying some aspect of what you see? You’ve experienced a mirror-triggered cognitive feedback. These thoughts, triggered by self-reflection, may simply stay thoughts that are never acted upon for a number of factors, some of which may be time and effort. Acting on the thought (improvement, say) requires moving away from the mirror. Thus, there is a disconnect between mirror self-reflection and action.
+
+Now, enter the world of the LLM chatbot.
+
 The advent of AI and chatbots has introduced a new phenomenon in the history of human civilization. I dub it the Mirror.
 
 The Mirror reflects what is placed before it. It does not add. It does not subtract. It shows you what you brought, rendered in a form you could not produce on your own. It takes articulated human cognition as input, re-represents it in inspectable external form, and returns the representation with high fluency and structure. We have always thought silently; writing externalizes thinking, but writing is slow and effortful, and the form of writing is constrained by what the writer can produce by hand and from memory. The Mirror externalizes thinking in real time, in the practitioner's register, with structure and fluency the practitioner could not reach unaided. The practitioner sees their own thinking re-rendered in a form they did not have to produce. This is not a small thing. It is the first medium in which a practitioner's inner monologue becomes inspectable to the practitioner at the speed of thought, in language a colleague could read.

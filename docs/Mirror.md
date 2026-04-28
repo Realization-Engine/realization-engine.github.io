@@ -38,26 +38,6 @@ This is what the Mirror does. The rest of the paper is about what its existence 
 
 ---
 
-## The question
-
-What questions should we be asking in front of the Mirror?
-
-I set out the mathematics of the Tipping Point and the Separatrix in *The Multiplier and the Mirror*. The mathematics tells us how hard it will be for every knowledge worker in every domain to keep their FORCE against the headwinds of ever-improving LLMs.
-
-Faced with this new entity, what should we do? What should we ask? What should we explore?
-
-What is it about the status quo that we wish to preserve? Our job? Our livelihood? Our agency? Our power?
-
-What we wish to preserve is the substance the Mirror reflects only variably, not the presentation it reflects regardless.
-
-In *The Multiplier and the Mirror*, I identify *meaningful struggle* as the synapse-engraving activity that builds durable FORCE.
-
-If we need a new means of meaningful struggle to maintain our FORCE in the new economy, what should we *struggle* for?
-
-These questions sit upstream of the formal apparatus the rest of this program develops. The mathematics names the dynamics; the companion memorandum and the architecture paper instantiate them for the engineer and the architect. None of them ask whether what we are defending was worth defending. This paper does.
-
----
-
 ## What the Mirror reveals
 
 The Mirror reflects what is placed before it. Iteration tests the reflection. What holds up under iteration is one set of structures, and what does not is another.
@@ -100,15 +80,13 @@ What the Mirror reveals is one kind of consequence. What the Mirror changes is a
 
 ---
 
-## The struggle reframed
+## The struggle
 
 The atrophy equation, in *The Multiplier and the Mirror*, tells us that struggle preserves FORCE. It does not specify which struggle. The choice of struggle is upstream of the equation. This paper’s claim is that the Mirror, attended to, makes the choice legible.
 
-Perhaps the struggle worth undertaking is the struggle to do work whose substance the Mirror cannot replace, in service of populations the prior structure had no economics to reach. This is not abstract. It is concrete. For the engineer, it is the specification work the companion memorandum argues for: the precise commitment to behavior the Mirror cannot author for you. For the architect, it is the integrative judgment across the pillars BTABoK names and the SMB-architect section in Part Two of *The Architect and the Agent* identifies as the SMB practice’s core. For the lawyer, it is the relationship-bound counsel that knows the client well enough to advise rather than to summarize. For the clinician, it is the longitudinal trust that sees the patient as a person rather than as a chart. For the teacher, it is the developmental relationship that holds the learner accountable to their own growth.
+Perhaps the struggle worth undertaking is the struggle to do work whose substance the Mirror cannot replace, in service of populations the prior structure had no economics to reach. Part Two of *The Architect and the Agent* examines such a future SMB practice. This is not abstract. It is concrete. For the engineer, it is the specification work the companion memorandum argues for: the precise commitment to behavior the Mirror cannot author for you. For the architect, it is the integrative judgment across the pillars BTABoK names.
 
-These are not new practices. They are practices that have been displaced. The Mirror changes the economics, and the practices become reachable again. The struggle worth undertaking is the relearning of those practices. The hysteresis equation, in *The Multiplier and the Mirror*, tells us why the relearning is a struggle: recovery is asymmetric to loss.
-
-The atrophy equation applies. The practitioner who chooses this struggle preserves FORCE. The practitioner who instead adopts the Mirror as a labor-saving substitute for the prior apparatus accelerates atrophy in the FORCE that apparatus had stopped exercising long ago. Both practitioners experience the Mirror’s pressure. They experience it differently because the struggle they are choosing is different.
+In each case, the atrophy equation applies. The practitioner who chooses this struggle preserves FORCE. The practitioner who instead adopts the Mirror as a labor-saving substitute for the prior apparatus accelerates atrophy in the FORCE that apparatus had stopped exercising long ago. Both practitioners experience the Mirror’s pressure. They experience it differently because the struggle they are choosing is different.
 
 The mathematics does not select the struggle. The Mirror reveals it. The mathematics names the conditions under which capability compounds or erodes. The Mirror names what capability is worth compounding.
 
@@ -122,4 +100,14 @@ This paper, Folio Nº I in the program’s numbering and the foundational inquir
 
 The program’s commitment, restated: the conditions under which augmented capability compounds rather than erodes are not only matters of equation and architecture. They are matters of attending to the Mirror. Without that attending, the equation will be applied to defend what is dissolving, and the architecture will be designed to preserve a structure whose dissolution was the Mirror’s first and clearest service. With it, the equation and the architecture serve the craft. The craft, in the end, is the only thing worth preserving.
 
-What we struggle for is the work that brings value to ourselves and to society, and in doing so gives us a place in the society to come. The Mirror helps us see it.
+---
+
+## The question
+
+What questions should we be asking in front of the Mirror?
+
+What is worth preserving? Not what the model can absorb. The F→M transfer flows surface and middle FORCE into the model; the deep layer, the tacit and relational and contextual judgment, resists encoding. As the Multiplier grows the Tipping Point rises with it, so the boundary of what holds up moves over time. What is worth preserving is what stays on the practitioner’s side of that boundary as it moves.  
+
+The collapse of execution we will discuss downstream is real. So what then is meaningful work against which to define a worthwhile program of struggle: for whom and for what?
+
+These questions sit upstream of the formal apparatus. None of the program’s other folios ask whether what we are defending was worth defending. This paper does.
